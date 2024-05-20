@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+body {
+    background-color: #000124;
+    color: azure;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 {
+    text-align: center;
+}
+
+.dashBoard,
+.add,
+.history {
+    display: flex;
+    border: 1px solid;
+    border-radius: 20px;
+    margin: 10px;
+}
+
+.dashBoard {
+    flex-direction: row;
+}
+
+.history {
+    flex-direction: column;
+}
+
+
+.dashBoard>div, .history>div {
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 10px;
+    margin: 10px;
+    color: black;
+}
+.income {
+    background-color: #9df79d;
+}
+
+.expense {
+    background-color: #f79d9d;
+}
+
+.history>div{
+    background-color: cadetblue;
+}
+
+.add{
+    justify-content: center;
+    padding: 10px;
+}
+
+.add>div{
+    display: flex;
+}
+
+.add div{
+    margin: 10px;
+}
+
+.add label{
+    display: inline-block;
+    min-width: 100px; /* Adjust as needed */
+    padding-right: 10px; /* Adds space between label and input */
+    color: yellow;
+}
+
+.add button{
+    padding: 5px;
+    width: 100px;
+    border-radius: 10px;
+    font-family: "Poetsen One", sans-serif;
+}
