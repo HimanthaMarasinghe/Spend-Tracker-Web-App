@@ -1,15 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu&display=swap');
+
+:root {
+    --color1: #E7ECEF;
+    --color2: #001732;
+    --color3: #6096BA;
+    --color4: #A3CEF1;
+}
+
 
 body {
-    background-color: #000124;
-    color: azure;
-    font-family: "Poetsen One", sans-serif;
+    background-color: var(--color2);
+    color: var(--color1);
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
 h1 {
     text-align: center;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .dashBoard,
@@ -39,23 +51,20 @@ h1 {
 }
 .income {
     background-color: #9df79d;
+    box-shadow: 0 0 10px #9df79d;
 }
 
 .expense {
     background-color: #f79d9d;
+    box-shadow: 0 0 10px #f79d9d;
 }
 
-.history>div{
-    background-color: cadetblue;
-}
+
 
 .add{
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 10px;
-}
-
-.add>div{
-    display: flex;
 }
 
 .add div{
@@ -64,14 +73,102 @@ h1 {
 
 .add label{
     display: inline-block;
-    min-width: 100px; /* Adjust as needed */
-    padding-right: 10px; /* Adds space between label and input */
-    color: yellow;
+    min-width: 100px;
+    padding-right: 10px;
+}
+
+.add select, .add input{
+    width: 200px;
+    box-sizing: border-box;
+    height: 20px;
+    border: none;
+    border-radius: 10px;
+    padding-inline: 10px;
+}
+
+.add select:focus, .add input:focus{
+    box-shadow: 0 0 10px #ffffff;
+    outline: none;
 }
 
 .add button{
     padding: 5px;
     width: 100px;
+    border: solid;
     border-radius: 10px;
     font-family: "Poetsen One", sans-serif;
+    box-shadow: 0 0 5px #ffffff;
+    margin: 10px;
+}
+
+.add button:hover{
+    box-shadow: 0 0 10px #ffffff;
+}
+
+.btnArray{
+    display: flex;
+    justify-content: center;
+}
+
+.history>div{
+    background-color: var(--color2);
+    color: var(--color1);
+    display: flex;
+    height: 100px;
+    /* border: 2px solid; */
+}
+
+.history>div>div{
+    margin-inline: 10px;
+    flex-grow: 1;
+}
+
+.history h3, .history h4, .history h2{
+    padding-inline: 10px;
+    margin: 8px;
+}
+
+.history p{
+    font-size: 12px;
+    text-align: justify;
+    height: 40%;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.history>h2{
+    text-align: center;
+    margin: 10px;
+}
+
+.history button{
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color3);
+    color: var(--color1);
+}
+
+.history button p{
+    margin: 0;
+}
+
+.incomeItem{
+    border: 2px solid #9df79d;
+    box-shadow: 0 0 10px #9df79d;
+}
+
+.expenseItem{
+    border: 2px solid #f79d9d;
+    box-shadow: 0 0 10px #f79d9d;
+}
+
+.incomeItem h3{
+    color: #9df79d;
+}
+
+.expenseItem h3{
+    color: #f79d9d;
 }

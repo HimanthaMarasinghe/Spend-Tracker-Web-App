@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
     <link rel="stylesheet" href="../public/css/styles.css">
     <title>Home</title>
 </head>
 
 <body>
-    
+
     <h1>Spending Tracker</h1>
     <div class="dashBoard">
         <div class="income">
@@ -22,6 +23,7 @@
         </div>
     </div>
     <div class="add">
+        <h2>Add new Item</h2>
         <form action="">
             <div>
                 <label for="amount">Amount</label>
@@ -40,28 +42,54 @@
                 <label for="description">Description</label>
                 <input type="text">
             </div>
-            <button type="submit" value="income" class="income">Income</button>
-            <button type="submit" value="expense" class="expense">Expense</button>
+            <div class="btnArray">
+                <button type="submit" value="income" class="income"><i class="fa-solid fa-circle-plus"></i> Income</button>
+                <button type="submit" value="expense" class="expense"><i class="fa-solid fa-circle-minus"></i> Expense</button>
+            </div>
         </form>
     </div>
     <div class="history">
-        <div>
+        <h2>Transaction History</h2>
+        <div class="incomeItem">
+            <div>
             <h3>Transaction_1</h3>
             <h2>999.99</h2>
         </div>
         <div>
+            <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
+            <div class="btnArray">
+                <button><i class="fa-solid fa-trash"></i></button>
+                <button><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        </div>
+        <div class="expenseItem">
+            <div>
             <h3>Transaction_1</h3>
             <h2>999.99</h2>
         </div>
         <div>
+            <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
+            <div class="btnArray">
+                <button><i class="fa-solid fa-trash"></i></button>
+                <button><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
+        </div>
+        </div>
+        <div class="incomeItem">
+            <div>
             <h3>Transaction_1</h3>
+            <h4>Type</h4>
             <h2>999.99</h2>
         </div>
         <div>
-            <h3>Transaction_1</h3>
-            <h2>999.99</h2>
+            <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
+            <div class="btnArray">
+                <button><i class="fa-solid fa-trash"></i></button>
+                <button><i class="fa-solid fa-pen-to-square"></i></button>
+            </div>
         </div>
-    </div>
+        </div>
 
 </body>
 
