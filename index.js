@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const db = require('./config/db');
 const item = require('./models/transaction');
 const transaction = require('./routes/transaction');
+const add = require('./routes/addNewItem');
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 app.use('/', transaction);
+app.use('/add', add);
 
 app.listen(3000, () => console.log('Server started at http://localhost:3000'));

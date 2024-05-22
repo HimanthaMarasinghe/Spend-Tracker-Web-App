@@ -35,11 +35,11 @@
         </div>
         <!-- Add Income -->
 
-        <form action="" class="addIncome active" id="addIncome">
+        <form action="/add/income" class="addIncome active" id="addIncome" method="post">
             <h2>Add new Income Item</h2>
             <div>
                 <label for="amount">Amount</label>
-                <input type="number" id="amount">
+                <input type="number" id="amount" name="amount">
             </div>
             <div>
                 <label for="type">Type</label>
@@ -52,7 +52,7 @@
             </div>
             <div>
                 <label for="description">Description</label>
-                <input type="text">
+                <input type="text" name="description">
             </div>
             <div class="btnArray">
                 <button type="submit" value="income" class="income"><i class="fa-solid fa-circle-plus"></i>
@@ -62,11 +62,11 @@
 
         <!-- Add Expese -->
 
-        <form action="" class="addExpense" id="addExpense">
+        <form action="add/expense" class="addExpense" id="addExpense" method="post">
             <h2>Add new Expense Item</h2>
             <div>
                 <label for="amount">Amount</label>
-                <input type="number" id="amount">
+                <input type="number" id="amount" name="amount">
             </div>
             <div>
                 <label for="type">Type</label>
@@ -79,7 +79,7 @@
             </div>
             <div>
                 <label for="description">Description</label>
-                <input type="text">
+                <input type="text" name="description">
             </div>
             <div class="btnArray">
                 <button type="submit" value="expense" class="expense"><i class="fa-solid fa-circle-minus"></i>

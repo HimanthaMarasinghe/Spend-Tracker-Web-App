@@ -7,6 +7,12 @@ const queryAllItems = () => {
     });
 };
 
+const insertItem = (newItem) => {
+    const item = new Item(newItem);
+    return item.save();
+}
+
 module.exports = {
-    queryAllItems
+    queryAllItems,
+    insertItem
 };
