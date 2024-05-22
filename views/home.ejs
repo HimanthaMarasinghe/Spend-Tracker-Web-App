@@ -39,11 +39,11 @@
             <h2>Add new Income Item</h2>
             <div>
                 <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount">
+                <input type="number" id="amount" name="amount" required>
             </div>
             <div>
                 <label for="type">Type</label>
-                <select name="type" id="type">
+                <select name="type" id="type" required>
                     <option>Option_1</option>
                     <option>Option_2</option>
                     <option>Option_3</option>
@@ -98,7 +98,7 @@
         <div class="<%= item.type == 'Income' ? 'incomeItem' : 'expenseItem' %>">
             <div class="col1">
                 <h3><%= item.type %> - <%= item.category%></h3>
-                <h4><%= item.Date %></h4>
+                <h4><%= item.date.toDateString() %></h4>
                 <h2>Rs.<%= item.amount %>.00</h2>
             </div>
             <div>

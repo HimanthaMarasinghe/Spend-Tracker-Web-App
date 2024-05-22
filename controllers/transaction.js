@@ -11,10 +11,19 @@ const getAllItems = async (req, res) => {
         day: 'numeric'
     };
 
-    const TotalIncome = 321;
-    const TotalExpense = 123;
+    let TotalIncome = 0;
+    let TotalExpense = 0;
 
     const historyItems = await queryAllItems();
+
+    historyItems.forEach(item => {
+        if(item.type === 'Income'){
+            TotalIncome += item.amount;
+        }
+        else{
+            TotalExpense += item.amount;
+        }
+    });
 
     return res.render('home', {
         TotalIncome: TotalIncome,
