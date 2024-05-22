@@ -42,13 +42,19 @@ h1 {
 }
 
 
-.dashBoard>div, .history>div {
+.dashBoard>div,
+.history>div {
     flex-grow: 1;
     text-align: center;
     border-radius: 10px;
     margin: 10px;
     color: black;
 }
+
+.history>div {
+    margin-top: 20px;
+}
+
 .income {
     background-color: #9df79d;
     box-shadow: 0 0 10px #9df79d;
@@ -59,25 +65,42 @@ h1 {
     box-shadow: 0 0 10px #f79d9d;
 }
 
+.balence{
+    background-color: #fff587;
+    box-shadow: 0 0 10px #fff587;
+}
 
 
-.add{
+
+.add {
     flex-direction: column;
     align-items: center;
     padding: 10px;
+    height: 230px;
 }
 
-.add div{
+@media screen and (min-width: 1000px) {
+    .add {
+        margin-inline: 20%;
+    }   
+}
+
+.add h2{
+    text-align: center;
+}
+
+.add div {
     margin: 10px;
 }
 
-.add label{
+.add label {
     display: inline-block;
     min-width: 100px;
     padding-right: 10px;
 }
 
-.add select, .add input{
+.add select,
+.add input {
     width: 200px;
     box-sizing: border-box;
     height: 20px;
@@ -86,12 +109,13 @@ h1 {
     padding-inline: 10px;
 }
 
-.add select:focus, .add input:focus{
+.add select:focus,
+.add input:focus {
     box-shadow: 0 0 10px #ffffff;
     outline: none;
 }
 
-.add button{
+.btnArray button {
     padding: 5px;
     width: 100px;
     border: solid;
@@ -101,34 +125,78 @@ h1 {
     margin: 10px;
 }
 
-.add button:hover{
+.btnArray button:hover {
     box-shadow: 0 0 10px #ffffff;
 }
 
-.btnArray{
+.btnArray {
     display: flex;
     justify-content: center;
 }
 
-.history>div{
+
+.toggleBtnArray{
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+    transform: translateY(-20px);
+}
+
+.toggleBtn{
+    font-size: 20px;
+    margin: 0;
+    border: none;
+    width: 100%;
+    flex-grow: 1;
+    background-color: var(--color2);
+    color: var(--color1);
+    border-radius: 10px;
+    cursor: pointer;
+    border-bottom: 2px solid var(--color1);
+}
+
+.toggleBtn::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--color2), transparent, var(--color2));
+}
+
+.toggleBtn-income{
+    border-radius: 10px 0 0 0;
+    border-right: 1px solid var(--color1);
+}
+
+.toggleBtn-expense{
+    border-radius: 0 10px 0 0;
+    border-left: 1px solid var(--color1);
+}
+
+.history>div {
     background-color: var(--color2);
     color: var(--color1);
     display: flex;
-    height: 100px;
-    /* border: 2px solid; */
+    height: 120px;
 }
 
-.history>div>div{
+.history>div>div {
     margin-inline: 10px;
     flex-grow: 1;
 }
 
-.history h3, .history h4, .history h2{
+.history .col1 h3,
+.history .col1 h4,
+.history .col1 h2 {
     padding-inline: 10px;
-    margin: 8px;
+    margin: 15px;
 }
 
-.history p{
+.history p {
     font-size: 12px;
     text-align: justify;
     height: 40%;
@@ -136,39 +204,55 @@ h1 {
     scrollbar-width: none;
 }
 
-.history>h2{
+.history>h2 {
     text-align: center;
     margin: 10px;
 }
 
-.history button{
-    display: flex;
-    padding: 5px;
-    margin: 5px;
+.col1{
+    transform: translateY(-25px);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--color2) 10%, var(--color2) 90%, rgba(0, 0, 0, 0) 100%);
     border-radius: 10px;
-    border: none;
-    background-color: var(--color3);
-    color: var(--color1);
+    width: 50%;
 }
 
-.history button p{
-    margin: 0;
+.col1 h3{
+    text-wrap: nowrap;
 }
 
-.incomeItem{
+.incomeItem {
     border: 2px solid #9df79d;
     box-shadow: 0 0 10px #9df79d;
 }
 
-.expenseItem{
+.expenseItem {
     border: 2px solid #f79d9d;
     box-shadow: 0 0 10px #f79d9d;
 }
 
-.incomeItem h3{
+.incomeItem h3 {
     color: #9df79d;
 }
 
-.expenseItem h3{
+.expenseItem h3 {
     color: #f79d9d;
+}
+.addIncome {
+    position: absolute;
+    transform: translate(-100%, 15px) scaleX(0);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.addExpense {
+    position: absolute;
+    transform: translate(100%, 15px) scaleX(0);
+    opacity: 0;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+.active {    
+    transition: transform 1s ease-in-out;
+    transform: translate(0, 15px) scaleX(1);
+    opacity: 1;
 }
