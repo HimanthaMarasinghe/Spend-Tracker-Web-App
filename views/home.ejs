@@ -95,11 +95,11 @@
 
         <% historyItems.forEach(item => { %>
 
-        <div class="<%= item.class %>">
+        <div class="<%= item.type == 'Income' ? 'incomeItem' : 'expenseItem' %>">
             <div class="col1">
-                <h3><%= item.type %></h3>
+                <h3><%= item.type %> - <%= item.category%></h3>
                 <h4><%= item.Date %></h4>
-                <h2><%= item.amount %></h2>
+                <h2>Rs.<%= item.amount %>.00</h2>
             </div>
             <div>
                 <p><%= item.description %></p>
