@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="../public/css/styles.css">
-    <script defer src="../public/scripts/script.js"></script>
+    <link rel="stylesheet" href="./css/styles.css">
+    <script defer src="./scripts/script.js"></script>
     <title>Home</title>
 </head>
 
@@ -16,15 +16,15 @@
     <div class="dashBoard">
         <div class="income">
             <h3>Income</h3>
-            <h2>999.99</h2>
+            <h2><%= TotalIncome %></h2>
         </div>
         <div class="expense">
             <h3>Expense</h3>
-            <h2>999.99</h2>
+            <h2><%= TotalExpense %></h2>
         </div>
         <div class="balence">
             <h3>Balance </h3>
-            <h2>999.99</h2>
+            <h2><%= Balance %></h2>
         </div>
     </div>
 
@@ -86,53 +86,23 @@
                     Expense</button>
             </div>
         </form>
-
-        <!-- end -->
     </div>
+
+    <!-- Transaction History -->
+
     <div class="history">
         <h2>Transaction History</h2>
-        <div class="incomeItem">
+
+        <% historyItems.forEach(item => { %>
+
+        <div class="<%= item.class %>">
             <div class="col1">
-                <h3>Income - Type</h3>
-                <h4>Type</h4>
-                <h2>999.99</h2>
+                <h3><%= item.type %></h3>
+                <h4><%= item.Date %></h4>
+                <h2><%= item.amount %></h2>
             </div>
             <div>
-                <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt
-                    aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
-                <div class="btnArray">
-                    <button><i class="fa-solid fa-trash"></i></button>
-                    <button><i class="fa-solid fa-pen-to-square"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="expenseItem">
-            <div class="col1">
-                <h3>Expense - Type can be long</h3>
-                <h4>Type</h4>
-                <h2>999.99</h2>
-            </div>
-            <div>
-                <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt
-                    aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
-                <div class="btnArray">
-                    <button><i class="fa-solid fa-trash"></i></button>
-                    <button><i class="fa-solid fa-pen-to-square"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="incomeItem">
-            <div class="col1">
-                <h3>Income - Type some time short</h3>
-                <h4>Type</h4>
-                <h2>999.99</h2>
-            </div>
-            <div>
-                <p>Discription. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                    consectetur adipisicing elit. Soluta facere sequi, eum officiis porro accusantium, odio, deserunt
-                    aliquam ut ea libero saepe ipsa tempora ducimus temporibus autem omnis dicta. Aperiam!</p>
+                <p><%= item.description %></p>
                 <div class="btnArray">
                     <button><i class="fa-solid fa-trash"></i></button>
                     <button><i class="fa-solid fa-pen-to-square"></i></button>
@@ -140,6 +110,8 @@
             </div>
         </div>
 
+        <% }); %>
+    </div>
 </body>
 
 </html>

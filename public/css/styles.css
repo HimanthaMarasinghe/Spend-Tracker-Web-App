@@ -8,6 +8,7 @@
     --color4: #A3CEF1;
 }
 
+/* Genaral */
 
 body {
     background-color: var(--color2);
@@ -41,7 +42,6 @@ h1 {
     flex-direction: column;
 }
 
-
 .dashBoard>div,
 .history>div {
     flex-grow: 1;
@@ -51,9 +51,7 @@ h1 {
     color: black;
 }
 
-.history>div {
-    margin-top: 20px;
-}
+/* DashBoard */
 
 .income {
     background-color: #9df79d;
@@ -65,27 +63,28 @@ h1 {
     box-shadow: 0 0 10px #f79d9d;
 }
 
-.balence{
+.balence {
     background-color: #fff587;
     box-shadow: 0 0 10px #fff587;
 }
 
-
+/* Add new item */
 
 .add {
     flex-direction: column;
     align-items: center;
     padding: 10px;
     height: 230px;
+    overflow: hidden;
 }
 
 @media screen and (min-width: 1000px) {
     .add {
         margin-inline: 20%;
-    }   
+    }
 }
 
-.add h2{
+.add h2 {
     text-align: center;
 }
 
@@ -135,7 +134,7 @@ h1 {
 }
 
 
-.toggleBtnArray{
+.toggleBtnArray {
     display: flex;
     flex-direction: row;
     margin: 0px;
@@ -144,7 +143,7 @@ h1 {
     transform: translateY(-20px);
 }
 
-.toggleBtn{
+.toggleBtn {
     font-size: 20px;
     margin: 0;
     border: none;
@@ -157,7 +156,7 @@ h1 {
     border-bottom: 2px solid var(--color1);
 }
 
-.toggleBtn::after{
+.toggleBtn::after {
     content: "";
     position: absolute;
     left: 0;
@@ -167,21 +166,51 @@ h1 {
     background: linear-gradient(to right, var(--color2), transparent, var(--color2));
 }
 
-.toggleBtn-income{
+.toggleBtn-income {
     border-radius: 10px 0 0 0;
     border-right: 1px solid var(--color1);
 }
 
-.toggleBtn-expense{
+.toggleBtn-expense {
     border-radius: 0 10px 0 0;
     border-left: 1px solid var(--color1);
 }
+
+.add form{
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
+}
+
+.addIncome {
+    transform: translate(-50%, 15px) scaleX(0);
+}
+
+.addExpense {
+    transform: translate(50%, 15px) scaleX(0);
+}
+
+.add form.active {
+    transform: translate(0, 15px) scaleX(1);
+    opacity: 1;
+}
+
+/* History */
 
 .history>div {
     background-color: var(--color2);
     color: var(--color1);
     display: flex;
     height: 120px;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .history>div {
+        display: block;
+        height: auto;
+    }
+
 }
 
 .history>div>div {
@@ -193,14 +222,27 @@ h1 {
 .history .col1 h4,
 .history .col1 h2 {
     padding-inline: 10px;
-    margin: 15px;
+    margin-block: 15px 0;
+}
+
+@media screen and (min-width: 800px) {
+    .history .col1 h2 {
+        margin-block: 25px;
+    }
+
+    .col1 {
+        transform: translateY(-28px);
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--color2) 10%, var(--color2) 90%, rgba(0, 0, 0, 0) 100%);
+        border-radius: 10px;
+        min-width: 400px;
+    }
 }
 
 .history p {
-    font-size: 12px;
-    text-align: justify;
+    text-align: center;
     height: 40%;
-    overflow: scroll;
+    margin-bottom: 0;
+    overflow: auto;
     scrollbar-width: none;
 }
 
@@ -209,14 +251,7 @@ h1 {
     margin: 10px;
 }
 
-.col1{
-    transform: translateY(-25px);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--color2) 10%, var(--color2) 90%, rgba(0, 0, 0, 0) 100%);
-    border-radius: 10px;
-    width: 50%;
-}
-
-.col1 h3{
+.col1 h3 {
     text-wrap: nowrap;
 }
 
@@ -236,23 +271,4 @@ h1 {
 
 .expenseItem h3 {
     color: #f79d9d;
-}
-.addIncome {
-    position: absolute;
-    transform: translate(-100%, 15px) scaleX(0);
-    opacity: 0;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-}
-
-.addExpense {
-    position: absolute;
-    transform: translate(100%, 15px) scaleX(0);
-    opacity: 0;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
-}
-
-.active {    
-    transition: transform 1s ease-in-out;
-    transform: translate(0, 15px) scaleX(1);
-    opacity: 1;
 }
