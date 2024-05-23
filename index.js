@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const db = require('./config/db');
-const item = require('./models/transaction');
 const transaction = require('./routes/transaction');
 const add = require('./routes/addNewItem');
 

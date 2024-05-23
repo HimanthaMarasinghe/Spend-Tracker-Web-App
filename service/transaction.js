@@ -1,6 +1,12 @@
 const Item = require('../models/transaction');
 
-const queryAllItems = () => {
+const queryAllItemsAmount = () => {
+    return Item.find({}, { type : 1, amount : 1}).then(result => {
+        return result;
+    });
+};
+
+const queryTenItems = () => {
 
     return Item.find().sort({ date: -1 }).limit(10).then(result => {
         return result;
@@ -13,6 +19,7 @@ const insertItem = (newItem) => {
 }
 
 module.exports = {
-    queryAllItems,
+    queryTenItems,
+    queryAllItemsAmount,
     insertItem
 };

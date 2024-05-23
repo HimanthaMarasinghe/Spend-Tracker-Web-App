@@ -35,7 +35,7 @@
         </div>
         <!-- Add Income -->
 
-        <form action="/add/income" class="addIncome active" id="addIncome" method="post">
+        <form action="/add/Income" class="addIncome active" id="addIncome" method="post" onsubmit="handleIncomeSubmit()">
             <h2>Add new Income Item</h2>
             <div>
                 <label for="amount">Amount</label>
@@ -43,12 +43,23 @@
             </div>
             <div>
                 <label for="type">Type</label>
-                <select name="type" id="type" required>
-                    <option>Option_1</option>
-                    <option>Option_2</option>
-                    <option>Option_3</option>
-                    <option>Option_4</option>
+                <select name="type" id="incomeTypes" required onchange="checkForNewIncomeOption()">
+                    <option>Allowance</option>
+                    <option>Bank Interest</option>
+                    <option>Bonuses</option>
+                    <option>Freelance Income</option>
+                    <option>Gifts</option>
+                    <option>Part-time Job Income</option>
+                    <option>Rental Income</option>
+                    <option>Salary</option>
+                    <option>Scholarships/Grants</option>
+                    <option value="new">Add New</option>
                 </select>
+                <input name="type" class="narrow" type="text" id="newIncomeType" style="display:none;" placeholder="Enter new income type">
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" name="date">
             </div>
             <div>
                 <label for="description">Description</label>
@@ -62,20 +73,41 @@
 
         <!-- Add Expese -->
 
-        <form action="add/expense" class="addExpense" id="addExpense" method="post">
+        <form action="add/Expense" class="addExpense" id="addExpense" method="post" onsubmit="handleExpenseSubmit()">
             <h2>Add new Expense Item</h2>
             <div>
                 <label for="amount">Amount</label>
                 <input type="number" id="amount" name="amount">
             </div>
             <div>
-                <label for="type">Type</label>
-                <select name="type" id="type">
-                    <option>Option_1</option>
-                    <option>Option_2</option>
-                    <option>Option_3</option>
-                    <option>Option_4</option>
+                <label for="expenseTypes">Type</label>
+                <select name="type" id="expenseTypes" required onchange="checkForNewExpenseOption()">
+                    <option>Childcare</option>
+                    <option>Clothing</option>
+                    <option>Debt Repayment</option>
+                    <option>Dining Out</option>
+                    <option>Education</option>
+                    <option>Entertainment</option>
+                    <option>Fuel</option>
+                    <option>Gifts/Donations</option>
+                    <option>Health</option>
+                    <option>Household Supplies</option>
+                    <option>Insurance</option>
+                    <option>Maintenance/Repairs</option>
+                    <option>Pets (Food, Vet Bills)</option>
+                    <option>Personal Care</option>
+                    <option>Public Transport</option>
+                    <option>Rent</option>
+                    <option>Savings/Investments</option>
+                    <option>Travel</option>
+                    <option>Water</option>
+                    <option value="new">Add New</option>
                 </select>
+                <input name="type" class="narrow" type="text" id="newExpenseType" style="display:none;" placeholder="Enter new expense type">
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" name="date">
             </div>
             <div>
                 <label for="description">Description</label>

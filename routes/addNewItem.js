@@ -1,8 +1,7 @@
 const express = require('express');
-const { addIncomeItem, addExpenseItem } = require('../controllers/transaction');
+const { addItem } = require('../controllers/transaction');
 const router = express.Router();
 
-router.post('/income', addIncomeItem);
-router.post('/expense', addExpenseItem);
+router.post('/:type', addItem);
 
 module.exports = router;
