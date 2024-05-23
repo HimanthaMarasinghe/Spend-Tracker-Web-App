@@ -16,13 +16,11 @@ body {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
+    margin: 0;
 }
 
-h1 {
-    text-align: center;
-    font-family: "Poetsen One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+i {
+    margin-right: 5px;
 }
 
 .dashBoard,
@@ -31,15 +29,6 @@ h1 {
     display: flex;
     border: 1px solid;
     border-radius: 20px;
-    margin: 10px;
-}
-
-.dashBoard {
-    flex-direction: row;
-}
-
-.history {
-    flex-direction: column;
 }
 
 .dashBoard>div,
@@ -51,7 +40,54 @@ h1 {
     color: black;
 }
 
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--color3);
+    color: var(--color2);
+}
+
+.header h1 {
+    text-align: left;
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
+    margin: 0;
+}
+
+.header button {
+    background-color: transparent;
+    color: var(--color1);
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: "Poetsen One", sans-serif;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .headerBtnText{
+        display: none;
+    }
+    
+}
+
 /* DashBoard */
+
+.dashBoard {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.dashBoard>div{
+    padding: 10px;
+}
 
 .income {
     background-color: #9df79d;
@@ -74,22 +110,48 @@ h1 {
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    height: 250px;
+    height: 400px;
+    width: 90%;
+    box-shadow: 0 0 30px #9df79d;
     overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: var(--color2);
 }
 
 @media screen and (min-width: 1000px) {
     .add {
-        margin-inline: 20%;
+        width: 800px;
     }
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+}
+
+.hide {
+    display: none;
 }
 
 .add h2 {
     text-align: center;
 }
 
-.add div {
+.add>div {
     margin: 10px;
+}
+
+.add>form>div {
+    margin: 30px;
 }
 
 .add label {
@@ -102,7 +164,7 @@ h1 {
 .add input {
     width: 200px;
     box-sizing: border-box;
-    height: 20px;
+    height: 30px;
     border: none;
     border-radius: 10px;
     padding-inline: 10px;
@@ -207,20 +269,17 @@ h1 {
 
 /* History */
 
+.history {
+    flex-direction: column;
+    margin: 20px;
+}
+
 .history>div {
     background-color: var(--color2);
     color: var(--color1);
-    display: flex;
-    height: 120px;
+    display: block;
+    height: auto;
     margin-top: 20px;
-}
-
-@media screen and (max-width: 800px) {
-    .history>div {
-        display: block;
-        height: auto;
-    }
-
 }
 
 .history>div>div {
@@ -244,8 +303,14 @@ h1 {
         transform: translateY(-28px);
         background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, var(--color2) 10%, var(--color2) 90%, rgba(0, 0, 0, 0) 100%);
         border-radius: 10px;
-        min-width: 400px;
+        width: 300px;
     }
+
+    .history>div {
+        display: flex;
+        height: 120px;
+    }
+
 }
 
 .history p {

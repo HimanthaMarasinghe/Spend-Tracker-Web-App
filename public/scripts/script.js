@@ -1,11 +1,13 @@
 function addIncome() {
     document.getElementById('addExpense').classList.remove('active');
     document.getElementById('addIncome').classList.add('active');
+    document.getElementById('add').style.boxShadow = "0 0 30px #9df79d";
 }
 
 function addExpense() {
     document.getElementById('addIncome').classList.remove('active');
     document.getElementById('addExpense').classList.add('active');
+    document.getElementById('add').style.boxShadow = "0 0 30px #f79d9d";
 }
 
 function checkForNewIncomeOption() {
@@ -52,4 +54,11 @@ function handleExpenseSubmit() {
         select.name = "";
     else
         newExpenseInput.name = "";
+}
+
+function toggleForm() {
+    var form = document.getElementById("add");
+    var backdrop = document.getElementById("backdrop");
+    form.classList.toggle("hide");
+    backdrop.classList.toggle("hide");
 }
