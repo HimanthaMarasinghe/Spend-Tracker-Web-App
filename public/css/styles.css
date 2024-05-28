@@ -18,7 +18,6 @@ body {
     font-style: normal;
     margin: 0;
 }
-
 i {
     margin-right: 5px;
 }
@@ -39,6 +38,37 @@ i {
     margin: 10px;
     color: black;
 }
+
+.leftForm {
+    transform: translate(-50%, 15px) scaleX(0);
+}
+
+.rightForm {
+    transform: translate(50%, 15px) scaleX(0);
+}
+
+/* Auth */
+
+body.authbody{
+    background-image: url("https://www.transparenttextures.com/patterns/connected.png");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90vh;
+}
+
+h1.authHeader{
+    font-size: 5rem;
+    color: var(--color4);
+    margin: 0;
+    font-family: "Poetsen One", sans-serif;
+}
+
+.add#auth{
+    box-shadow: 0 0 30px #fff587;
+}
+
 
 /* Header */
 
@@ -112,14 +142,17 @@ i {
     padding: 10px;
     height: 400px;
     width: 90%;
-    box-shadow: 0 0 30px #9df79d;
     overflow: hidden;
+    background-color: var(--color2);
+}
+
+.add#add{
+    box-shadow: 0 0 30px #9df79d;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    background-color: var(--color2);
 }
 
 @media screen and (min-width: 1000px) {
@@ -142,6 +175,7 @@ i {
     display: none;
 }
 
+.add h1,
 .add h2 {
     text-align: center;
 }
@@ -221,7 +255,7 @@ i {
     border: none;
     width: 100%;
     flex-grow: 1;
-    background-color: var(--color2);
+    background-color: transparent;
     color: var(--color1);
     border-radius: 10px;
     cursor: pointer;
@@ -252,14 +286,6 @@ i {
     position: absolute;
     opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
-}
-
-.addIncome {
-    transform: translate(-50%, 15px) scaleX(0);
-}
-
-.addExpense {
-    transform: translate(50%, 15px) scaleX(0);
 }
 
 .add form.active {

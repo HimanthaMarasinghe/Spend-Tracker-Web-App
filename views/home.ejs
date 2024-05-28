@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="./css/styles.css">
-    <script defer src="./scripts/script.js"></script>
-    <title>Home</title>
-</head>
+<%- include("partials/header"); %>
 
 <body>
     <div class="header">
@@ -38,12 +28,12 @@
     <div class="backdrop hide" id="backdrop" onclick="toggleForm()"></div>
     <div class="add hide" id="add">
         <div class="toggleBtnArray">
-            <button onclick="addIncome()" class="toggleBtn toggleBtn-income">Add Income</button>
-            <button onclick="addExpense()" class="toggleBtn toggleBtn-expense">Add Expense</button>
+            <button onclick="leftForm()" class="toggleBtn toggleBtn-income">Add Income</button>
+            <button onclick="rightForm()" class="toggleBtn toggleBtn-expense">Add Expense</button>
         </div>
         <!-- Add Income -->
 
-        <form action="/add/Income" class="addIncome active" id="addIncome" method="post"
+        <form action="/add/Income" class="leftForm active" id="leftForm" method="post"
             onsubmit="handleIncomeSubmit()">
             <h2>Add new Income Item</h2>
             <div>
@@ -81,7 +71,7 @@
 
         <!-- Add Expese -->
 
-        <form action="add/Expense" class="addExpense" id="addExpense" method="post" onsubmit="handleExpenseSubmit()">
+        <form action="/add/Expense" class="rightForm" id="rightForm" method="post" onsubmit="handleExpenseSubmit()">
             <h2>Add new Expense Item</h2>
             <div>
                 <label for="amount">Amount</label>

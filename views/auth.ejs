@@ -1,0 +1,54 @@
+<%- include("partials/header"); %>
+
+<body class="authbody">
+    <h1 class="authHeader">Spending Tracker</h1>
+    <div class="add" id="auth">
+        <div class="toggleBtnArray">
+            <button onclick="leftForm()" class="toggleBtn toggleBtn-income">Register</button>
+            <button onclick="rightForm()" class="toggleBtn toggleBtn-expense">Log In</button>
+        </div>
+        <!-- Register -->
+
+        <form action="/auth/register" class="leftForm active" id="leftForm" method="post">
+            <h1>Register</h1>
+            <div>
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+            </div>
+            <div>
+                <label for="passwordAgain"></label>
+                <input type="password" id="passwordAgain" placeholder="Confirm your password" required>
+            </div>
+            <div class="btnArray">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+
+        <!-- Log In -->
+
+        <form action="/auth/login" class="rightForm" id="rightForm" method="post" style="margin-top: 60px;">
+            <h1>Log In</h1>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="btnArray">
+                <button type="submit">Log In</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
