@@ -7,9 +7,20 @@
             <button onclick="toggleForm()"><i class="fa-solid fa-circle-plus"></i> <span class="headerBtnText">Add New Item</span></button>
             <button><i class="fa-solid fa-magnifying-glass"></i> <span class="headerBtnText">Search Items</span></button>
             <button><i class="fa-solid fa-chart-simple"></i> <span class="headerBtnText">Summary</span></button>
-            <button><i class="fa-solid fa-user"></i> <span class="headerBtnText"><%= username %></span></button>
+            <button onclick="toggleDropdown()"><i class="fa-solid fa-user"></i> <span class="headerBtnText"><%= username %></span></button>
         </div>
     </div>
+
+    <div class="dropdown hide" id="dropdown">
+        <i class="fa-solid fa-user"></i><h3><%= username %></h3>
+        <hr>
+        <div>
+            <a href=""><p><i class="fa-solid fa-address-card"></i>Profile</p><i class="fa-solid fa-angle-up fa-rotate-90"></i></a>
+            <a href="" onclick="logout()"><p><i class="fa-solid fa-right-from-bracket"></i>Log Out</p><i class="fa-solid fa-angle-up fa-rotate-90"></i></a>
+        </div>
+    </div>
+
+    <div class="backdrop hide" id="backdrop-light" onclick="toggleDropdown()"></div>
 
     <div class="dashBoard">
         <div class="income">
@@ -26,7 +37,7 @@
         </div>
     </div>
 
-    <div class="backdrop hide" id="backdrop" onclick="toggleForm()"></div>
+    <div class="backdrop dark hide" id="backdrop-dark" onclick="toggleForm()"></div>
     <div class="add hide" id="add">
         <div class="toggleBtnArray">
             <button onclick="leftForm()" class="toggleBtn toggleBtn-income">Add Income</button>

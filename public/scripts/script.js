@@ -57,8 +57,21 @@ function handleExpenseSubmit() {
 }
 
 function toggleForm() {
-    var form = document.getElementById("add");
-    var backdrop = document.getElementById("backdrop");
-    form.classList.toggle("hide");
-    backdrop.classList.toggle("hide");
+    document.getElementById("add").classList.toggle("hide");
+    document.getElementById("backdrop-dark").classList.toggle("hide");
+}
+
+function toggleDropdown() {
+    document.getElementById("dropdown").classList.toggle("hide");
+    document.getElementById("backdrop-light").classList.toggle("hide");
+}
+
+async function logout() {
+    try {
+        await fetch('/auth/logout', {
+            method: 'POST'
+        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }

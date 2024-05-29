@@ -8,12 +8,6 @@ const getAllItems = async (req, res) => {
 
     const userId = req.user._id;
 
-    const options = {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric'
-    };
-
     let TotalIncome = 0;
     let TotalExpense = 0;
 

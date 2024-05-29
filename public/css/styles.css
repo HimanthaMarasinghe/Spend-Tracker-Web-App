@@ -107,6 +107,51 @@ h1.authHeader{
     
 }
 
+.dropdown {
+    position: absolute;
+    background-color: var(--color1);
+    border: solid var(--color3);
+    border-radius: 5px;
+    color: var(--color2);
+    padding: 20px;
+    margin: 10px;
+    right: 5%;
+    z-index: 2;
+}
+
+.dropdown h3 {
+    display: inline;
+    margin-inline: 5px;
+}
+
+.dropdown div {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown a {
+    text-decoration: none;
+    display: flex;
+    margin-block: 5px;
+}
+
+.dropdown a>p{
+    flex-grow: 1;
+    margin: 0;
+}
+
+.dropdown a:hover p {
+    font-weight: 600;
+}
+
+.dropdown a>i {
+    transition: transform 0.5s;
+}
+
+.dropdown a:hover>i {
+    transform: translateX(8px) rotate(90deg);;
+}
+
 /* DashBoard */
 
 .dashBoard {
@@ -167,8 +212,11 @@ h1.authHeader{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
+}
+
+.backdrop.dark{    
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .hide {
