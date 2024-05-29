@@ -1,14 +1,14 @@
 const Item = require('../models/transaction');
 
-const queryAllItemsAmount = () => {
-    return Item.find({}, { type : 1, amount : 1}).then(result => {
+const queryAllItemsAmount = (userId) => {
+    return Item.find({userId}, { type : 1, amount : 1}).then(result => {
         return result;
     });
 };
 
-const queryTenItems = () => {
+const queryTenItems = (userId) => {
 
-    return Item.find().sort({ date: -1 }).limit(10).then(result => {
+    return Item.find({userId}).sort({ date: -1 }).limit(10).then(result => {
         return result;
     });
 };

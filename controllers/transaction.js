@@ -6,6 +6,8 @@ const {
 
 const getAllItems = async (req, res) => {
 
+    const userId = req.user._id;
+
     const options = {
         weekday: 'long',
         month: 'long',
@@ -15,7 +17,7 @@ const getAllItems = async (req, res) => {
     let TotalIncome = 0;
     let TotalExpense = 0;
 
-    const historyItemsAmount = await queryAllItemsAmount();
+    const historyItemsAmount = await queryAllItemsAmount(userId);
 
     historyItemsAmount.forEach(item => {
         if(item.type === 'Income'){
@@ -26,20 +28,23 @@ const getAllItems = async (req, res) => {
         }
     });
 
-    const tenHistoryItems = await queryTenItems();
+    const tenHistoryItems = await queryTenItems(userId);
 
     return res.render('home', {
-        TotalIncome: TotalIncome,
-        TotalExpense: TotalExpense,
+        username : req.user.fName,
+        TotalIncome,
+        TotalExpense,
         Balance: TotalIncome - TotalExpense,
         historyItems: tenHistoryItems
     });
 };
 
 const addItem = async (req, res) => {
+    
     const {type, amount, date, description} = req.body;
 
     const newItem = {
+        userId: req.user._id,
         type: req.params.type,
         category: type,
         amount: amount,
