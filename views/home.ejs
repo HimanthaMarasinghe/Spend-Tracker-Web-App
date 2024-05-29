@@ -87,7 +87,7 @@
             <h2>Add new Expense Item</h2>
             <div>
                 <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount">
+                <input type="number" id="amount" name="amount" required>
             </div>
             <div>
                 <label for="expenseTypes">Type</label>
@@ -145,7 +145,7 @@
             <div>
                 <p><%= item.description == '' ? 'No Description' : item.description %></p>
                 <div class="btnArray">
-                    <button><i class="fa-solid fa-trash"></i></button>
+                    <button onclick="deleteItem('<%= item._id %>')"><i class="fa-solid fa-trash"></i></button>
                     <button><i class="fa-solid fa-pen-to-square"></i></button>
                 </div>
             </div>

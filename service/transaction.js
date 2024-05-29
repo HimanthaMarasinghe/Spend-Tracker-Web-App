@@ -18,8 +18,13 @@ const insertItem = (newItem) => {
     return item.save();
 }
 
+const dropItem = (itemId) => {
+    return Item.findByIdAndDelete(itemId);
+}
+
 module.exports = {
     queryTenItems,
     queryAllItemsAmount,
-    insertItem
+    insertItem,
+    dropItem
 };

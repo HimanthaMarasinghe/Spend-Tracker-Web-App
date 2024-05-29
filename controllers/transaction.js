@@ -1,7 +1,8 @@
 const {
     queryTenItems,
     queryAllItemsAmount,
-    insertItem
+    insertItem,
+    dropItem
 } = require('../service/transaction');
 
 const getAllItems = async (req, res) => {
@@ -51,7 +52,13 @@ const addItem = async (req, res) => {
     return res.redirect('/');
 }
 
+const deleteItem = async (req, res) => {
+    await dropItem(req.params.itemId);
+    return res.redirect('/');
+}
+
 module.exports = {
     getAllItems,
-    addItem
+    addItem,
+    deleteItem
 };

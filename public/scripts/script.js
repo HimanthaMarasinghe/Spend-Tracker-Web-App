@@ -68,9 +68,16 @@ function toggleDropdown() {
 
 async function logout() {
     try {
-        await fetch('/auth/logout', {
-            method: 'POST'
-        });
+        await fetch('/auth/logout', {method: 'POST'});
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+async function deleteItem(itemID) {
+    try {
+        await fetch(`/delete/${itemID}`, {method: 'DELETE'});
+        location.reload();
     } catch (error) {
         console.error('Error:', error);
     }
