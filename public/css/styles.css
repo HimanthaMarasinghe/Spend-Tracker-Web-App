@@ -164,12 +164,12 @@ h1.authHeader{
     padding: 10px;
 }
 
-.income {
+.Income {
     background-color: #9df79d;
     box-shadow: 0 0 10px #9df79d;
 }
 
-.expense {
+.Expense {
     background-color: #f79d9d;
     box-shadow: 0 0 10px #f79d9d;
 }
@@ -191,6 +191,7 @@ h1.authHeader{
     background-color: var(--color2);
 }
 
+.add#update,
 .add#add{
     box-shadow: 0 0 30px #9df79d;
     position: fixed;

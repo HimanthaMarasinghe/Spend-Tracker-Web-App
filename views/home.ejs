@@ -1,10 +1,13 @@
 <%- include("partials/header"); %>
 
 <body>
+
+    <!-- Page header -->
+
     <div class="header">
         <h1>Spending Tracker</h1>
         <div>
-            <button onclick="toggleForm()"><i class="fa-solid fa-circle-plus"></i> <span class="headerBtnText">Add New Item</span></button>
+            <button onclick="openAddForm()"><i class="fa-solid fa-circle-plus"></i> <span class="headerBtnText">Add New Item</span></button>
             <button><i class="fa-solid fa-magnifying-glass"></i> <span class="headerBtnText">Search Items</span></button>
             <button><i class="fa-solid fa-chart-simple"></i> <span class="headerBtnText">Summary</span></button>
             <button onclick="toggleDropdown()"><i class="fa-solid fa-user"></i> <span class="headerBtnText"><%= username %></span></button>
@@ -22,12 +25,14 @@
 
     <div class="backdrop hide" id="backdrop-light" onclick="toggleDropdown()"></div>
 
+    <!-- Dashboard -->
+
     <div class="dashBoard">
-        <div class="income">
+        <div class="Income">
             <h3>Income</h3>
             <h2>Rs.<%= TotalIncome %>.00</h2>
         </div>
-        <div class="expense">
+        <div class="Expense">
             <h3>Expense</h3>
             <h2>Rs.<%= TotalExpense %>.00</h2>
         </div>
@@ -35,98 +40,6 @@
             <h3>Balance </h3>
             <h2>Rs.<%= Balance %>.00</h2>
         </div>
-    </div>
-
-    <div class="backdrop dark hide" id="backdrop-dark" onclick="toggleForm()"></div>
-    <div class="add hide" id="add">
-        <div class="toggleBtnArray">
-            <button onclick="leftForm()" class="toggleBtn toggleBtn-income">Add Income</button>
-            <button onclick="rightForm()" class="toggleBtn toggleBtn-expense">Add Expense</button>
-        </div>
-        <!-- Add Income -->
-
-        <form action="/add/Income" class="leftForm active" id="leftForm" method="post"
-            onsubmit="handleIncomeSubmit()">
-            <h2>Add new Income Item</h2>
-            <div>
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount" required>
-            </div>
-            <div>
-                <label for="type">Type</label>
-                <select name="type" id="incomeTypes" required onchange="checkForNewIncomeOption()">
-                    <option>Allowance</option>
-                    <option>Bank Interest</option>
-                    <option>Bonuses</option>
-                    <option>Freelance Income</option>
-                    <option>Gifts</option>
-                    <option>Part-time Job Income</option>
-                    <option>Rental Income</option>
-                    <option>Salary</option>
-                    <option>Scholarships/Grants</option>
-                    <option value="new">Add New</option>
-                </select>
-                <input name="type" class="narrow" type="text" id="newIncomeType" style="display:none;" placeholder="Enter new income type">
-            </div>
-            <div>
-                <label for="date">Date</label>
-                <input type="date" name="date">
-            </div>
-            <div>
-                <label for="description">Description</label>
-                <input type="text" name="description">
-            </div>
-            <div class="btnArray">
-                <button type="submit" value="income" class="income"><i class="fa-solid fa-circle-plus"></i> Income</button>
-            </div>
-        </form>
-
-        <!-- Add Expese -->
-
-        <form action="/add/Expense" class="rightForm" id="rightForm" method="post" onsubmit="handleExpenseSubmit()">
-            <h2>Add new Expense Item</h2>
-            <div>
-                <label for="amount">Amount</label>
-                <input type="number" id="amount" name="amount" required>
-            </div>
-            <div>
-                <label for="expenseTypes">Type</label>
-                <select name="type" id="expenseTypes" required onchange="checkForNewExpenseOption()">
-                    <option>Childcare</option>
-                    <option>Clothing</option>
-                    <option>Debt Repayment</option>
-                    <option>Dining Out</option>
-                    <option>Education</option>
-                    <option>Entertainment</option>
-                    <option>Fuel</option>
-                    <option>Gifts/Donations</option>
-                    <option>Health</option>
-                    <option>Household Supplies</option>
-                    <option>Insurance</option>
-                    <option>Maintenance/Repairs</option>
-                    <option>Pets (Food, Vet Bills)</option>
-                    <option>Personal Care</option>
-                    <option>Public Transport</option>
-                    <option>Rent</option>
-                    <option>Savings/Investments</option>
-                    <option>Travel</option>
-                    <option>Water</option>
-                    <option value="new">Add New</option>
-                </select>
-                <input name="type" class="narrow" type="text" id="newExpenseType" style="display:none;" placeholder="Enter new expense type">
-            </div>
-            <div>
-                <label for="date">Date</label>
-                <input type="date" name="date">
-            </div>
-            <div>
-                <label for="description">Description</label>
-                <input type="text" name="description">
-            </div>
-            <div class="btnArray">
-                <button type="submit" value="expense" class="expense"><i class="fa-solid fa-circle-minus"></i> Expense</button>
-            </div>
-        </form>
     </div>
 
     <!-- Transaction History -->
@@ -146,13 +59,43 @@
                 <p><%= item.description == '' ? 'No Description' : item.description %></p>
                 <div class="btnArray">
                     <button onclick="deleteItem('<%= item._id %>')"><i class="fa-solid fa-trash"></i></button>
-                    <button><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button onclick="openUpdateForm('<%= item._id %>', '<%= item.amount %>', '<%= item.category %>', '<%= item.date %>', '<%= item.description %>', '<%=item.type%>')"><i class="fa-solid fa-pen-to-square"></i></button>
                 </div>
             </div>
         </div>
 
-        <% }); %>
+        <% }); %>   
     </div>
+    
+    <div class="backdrop dark hide" id="backdrop-dark" onclick="closeForm()"></div>
+
+    <!-- Add new items -->
+
+    <div class="add hide" id="add">
+        <div class="toggleBtnArray">
+            <button onclick="leftForm()" class="toggleBtn toggleBtn-income">Add Income</button>
+            <button onclick="rightForm()" class="toggleBtn toggleBtn-expense">Add Expense</button>
+        </div>
+
+        <%- include("partials/itemForm", {type: "Income" }) %>
+        <%- include("partials/itemForm", {type: "Expense" }); %>
+
+    </div>
+
+    <!-- Edit Item -->
+
+    <div class="add hide" id="update">
+        <div class="toggleBtnArray">
+            <button onclick="leftUpdateForm()" class="toggleBtn toggleBtn-income">Add Income</button>
+            <button onclick="rightUpdateForm()" class="toggleBtn toggleBtn-expense">Add Expense</button>
+        </div>
+
+        <%- include("partials/itemForm", {type: "Income-Upd" }); %>
+        <%- include("partials/itemForm", {type: "Expense-Upd" }); %>
+
+    </div>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/update.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,8 @@ const {
     queryTenItems,
     queryAllItemsAmount,
     insertItem,
-    dropItem
+    dropItem,
+    update
 } = require('../service/transaction');
 
 const getAllItems = async (req, res) => {
@@ -57,8 +58,29 @@ const deleteItem = async (req, res) => {
     return res.redirect('/');
 }
 
+const updateItem = async (req, res) => {
+    const {id, type, amount, date, description} = req.body;
+
+    const updatedItem = {
+        type: req.params.type,
+        category: type,
+        amount: amount,
+        description: description
+    };
+
+    if(date !== ''){
+        updatedItem.date = date;
+    }
+
+    await update(id, updatedItem);
+
+    return res.redirect('/');
+
+}
+
 module.exports = {
     getAllItems,
     addItem,
-    deleteItem
+    deleteItem,
+    updateItem
 };

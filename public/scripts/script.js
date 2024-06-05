@@ -1,64 +1,56 @@
-function leftForm() {
-    document.getElementById('rightForm').classList.remove('active');
-    document.getElementById('leftForm').classList.add('active');
-    document.getElementById('add').style.boxShadow = "0 0 30px #9df79d";
+function leftUpdateForm() {
+    document.getElementById('rightForm-Upd').classList.remove('active');
+    document.getElementById('leftForm-Upd').classList.add('active');
+    document.getElementById('update').style.boxShadow = "0 0 30px #9df79d";
 }
 
-function rightForm() {
-    document.getElementById('leftForm').classList.remove('active');
-    document.getElementById('rightForm').classList.add('active');
-    document.getElementById('add').style.boxShadow = "0 0 30px #f79d9d";
+function rightUpdateForm() {    
+    document.getElementById('leftForm-Upd').classList.remove('active');
+    document.getElementById('rightForm-Upd').classList.add('active');
+    document.getElementById('update').style.boxShadow = "0 0 30px #f79d9d";
 }
 
-function checkForNewIncomeOption() {
-    var select = document.getElementById("incomeTypes");
-    var newIncomeInput = document.getElementById("newIncomeType");
 
-    if (select.value === "new") {
-        newIncomeInput.style.display = "inline";
-        select.classList.add("narrow")
+
+function checkForNewItem(newType, type) {
+    const newInput = document.getElementById(newType);
+
+    if (type.value === "new") {
+        newInput.style.display = "inline";
+        type.classList.add("narrow");
     } else {
-        newIncomeInput.style.display = "none";
-        select.classList.remove("narrow")
+        newInput.style.display = "none";
+        type.classList.remove("narrow");
     }
-}
+};
 
-function handleIncomeSubmit() {
-    var select = document.getElementById("incomeTypes");
-    var newIncomeInput = document.getElementById("newIncomeType");
 
-    if (select.value == "new") 
-        select.name = "";
-    else
-        newIncomeInput.name = "";
-}
 
-function checkForNewExpenseOption() {
-    var select = document.getElementById("expenseTypes");
-    var newExpenseInput = document.getElementById("newExpenseType");
+document.getElementById("IncomeTypes").addEventListener('change', function() {checkForNewItem("newIncomeType", this)});
+document.getElementById("ExpenseTypes").addEventListener('change', function() {checkForNewItem("newExpenseType", this)});
 
-    if (select.value === "new") {
-        newExpenseInput.style.display = "inline";
-        select.classList.add("narrow");
-    } else {
-        newExpenseInput.style.display = "none";
-        select.classList.remove("narrow");
-    }
-}
-
-function handleExpenseSubmit() {
-    var select = document.getElementById("expenseTypes");
-    var newExpenseInput = document.getElementById("newExpenseType");
-
-    if (select.value == "new") 
+function handleSubmit(type) {
+    const select = document.getElementById(`${type}Types`);
+    const newExpenseInput = document.getElementById(`new${type}Type`);
+    
+    if (select.value == "new")
         select.name = "";
     else
         newExpenseInput.name = "";
 }
 
-function toggleForm() {
-    document.getElementById("add").classList.toggle("hide");
-    document.getElementById("backdrop-dark").classList.toggle("hide");
+document.getElementById("leftForm").addEventListener('submit', function() {handleSubmit("Income")});
+document.getElementById("rightForm").addEventListener('submit', function() {handleSubmit("Expense")});
+
+function openAddForm() {
+    document.getElementById("add").classList.remove("hide");
+    document.getElementById("backdrop-dark").classList.remove("hide");
+}
+
+function closeForm() {
+    document.getElementById("add").classList.add("hide");
+    document.getElementById("update").classList.add("hide");
+    document.getElementById("backdrop-dark").classList.add("hide");
 }
 
 function toggleDropdown() {

@@ -22,9 +22,14 @@ const dropItem = (itemId) => {
     return Item.findByIdAndDelete(itemId);
 }
 
+const update = (itemId, updateItem) => {
+    return Item.findByIdAndUpdate(itemId, updateItem);
+}
+
 module.exports = {
     queryTenItems,
     queryAllItemsAmount,
     insertItem,
-    dropItem
+    dropItem,
+    update
 };

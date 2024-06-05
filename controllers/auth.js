@@ -6,7 +6,7 @@ const auth = (req, res) => {
 };
 
 const register = (req, res) => {
-    User.register(new User({ email: req.body.email, fName: req.body.fullName }), req.body.password, (err, user) => {
+    User.register(new User({ email: req.body.email, fName: req.body.name }), req.body.password, (err, user) => {
         if (err) {
             console.log(err);
             return res.redirect('/auth');

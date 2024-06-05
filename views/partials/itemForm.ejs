@@ -1,0 +1,69 @@
+<% var incomeOptions = ['Allowance', 'Bank Interest', 'Bonuses', 'Freelance Income', 'Gifts', 'Part-time Job Income', 'Rental Income', 'Salary', 'Scholarships/Grants']; %>
+<% var expenseOptions = ['Bills', 'Car', 'Clothing', 'Education', 'Entertainment', 'Food', 'Gifts', 'Health', 'Household', 'Insurance', 'Investments', 'Loans', 'Miscellaneous', 'Personal Care', 'Pets', 'Rent', 'Shopping', 'Transport', 'Travel']; %>
+
+<% var action, formClass, formId, optionArray, header, btn; %>
+<%
+switch(type) {
+    case 'Income':
+        action = "/add/Income";
+        formClass = "leftForm active";
+        formId = "leftForm";
+        optionArray = incomeOptions;
+        header = "Add new Income Item";
+        btn = "Income";
+        break;
+    case 'Expense':
+        action = "/add/Expense";
+        formClass = "rightForm";
+        formId = "rightForm";
+        optionArray = expenseOptions;
+        header = "Add new Expense Item";
+        btn = "Expense";
+        break;
+    case 'Income-Upd':
+        action = "/update/Income";
+        formClass = "leftForm active";
+        formId = "leftForm-Upd";
+        optionArray = incomeOptions;
+        header = "Update Income Item";
+        btn = "Income";
+        break;
+    case 'Expense-Upd':
+        action = "/update/Expense";
+        formClass = "rightForm";
+        formId = "rightForm-Upd";
+        optionArray = expenseOptions;
+        header = "Update Expense Item";
+        btn = "Expense";
+        break;
+}
+%>
+    
+<form action="<%= action %>" class="<%= formClass %>" id="<%= formId %>" method="post">
+    <h2><%= header %></h2>
+                <div>
+                <label for="amount">Amount</label>
+                <input type="number" id="<%= type %>Amount" name="amount" required>
+            </div>
+            <div>
+                <label for="<%= type %>Types">Type</label>
+                <select name="type" id="<%= type %>Types" required>
+                    <% optionArray.forEach(option => { %>
+                        <option><%= option %></option>
+                    <% }) %>
+                    <option value="new">Add New</option>
+                </select>
+                <input name="type" class="narrow" type="text" id="new<%= type %>Type" style="display:none;" placeholder="Enter new type">
+            </div>
+            <div>
+                <label for="date">Date</label>
+                <input type="date" name="date">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" name="description">
+            </div>
+            <div class="btnArray">
+                <button type="submit" class="<%= btn %>"><i class="fa-solid fa-circle-plus"></i> <%= btn %></button>
+            </div>
+        </form>

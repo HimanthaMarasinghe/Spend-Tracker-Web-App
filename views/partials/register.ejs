@@ -1,0 +1,22 @@
+<form action="/auth/register" class="leftForm active" id="leftForm" method="post">
+    <h1>Register</h1>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="How should we address you" required>
+    </div>
+    <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password"  autocomplete="new-password"  required>
+    </div>
+    <div>
+        <label for="passwordAgain"></label>
+        <input type="password" id="passwordAgain" placeholder="Confirm your password"  autocomplete="new-password"  required>
+    </div>
+    <div class="btnArray">
+        <button type="submit">Register</button>
+    </div>
+</form>
